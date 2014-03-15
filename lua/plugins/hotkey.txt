@@ -1,0 +1,2 @@
+#为要执行的应用程序指定一个快捷键，格式【路径:快捷键】
+plugins\SnapShot.exe:ctrl+f3
