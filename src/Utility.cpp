@@ -1,4 +1,4 @@
-#ifndef GET_KEYSTATE_WPARAM
+﻿#ifndef GET_KEYSTATE_WPARAM
 	#define GET_KEYSTATE_WPARAM(wParam)     (LOWORD(wParam))
 #endif
 

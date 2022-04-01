@@ -8,7 +8,6 @@ require('scripts.PluginManager')				--插件管理
 require('scripts.OnRightButtonDown')			--托盘右键
 require('scripts.OnClipboardChange')			--剪贴板变动
 require('scripts.OnHotKeyDown')					--热键管理
-require('scripts.AllowWheelThrough')			--滚轮穿透管理
 require('scripts.Update')						--更新检查
 
 --保存一次配置文件

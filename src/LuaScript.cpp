@@ -1,4 +1,4 @@
-#include "LuaBind.cpp"
+﻿#include "LuaBind.cpp"
 
 class LuaScript
 {
@@ -158,26 +158,6 @@ public:
 				error_handler(L);
 			}
 		}
-	}
-
-	bool AllowWheelThrough()
-	{
-		lua_getglobal(L, "AllowWheelThrough");
-		if(lua_isfunction(L, -1))
-		{
-			if(!lua_pcall(L, 0, 1, 0))
-			{
-				if(lua_isboolean(L, 1))
-				{
-					return lua_toboolean(L, 1);
-				}
-			}
-			else
-			{
-				error_handler(L);
-			}
-		}
-		return false;
 	}
 private:
 	lua_State *L;

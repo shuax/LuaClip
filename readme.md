@@ -1,21 +1,23 @@
-#欢迎使用LuaClip
+# 欢迎使用LuaClip
 
-##介绍
+## 警告
+此项目已经废弃！！！
+
+## 介绍
 LuaClip是一款window剪贴板增强软件，目前并不成熟还需要您的各种建议
 
 程序启动以后会在任务栏通知区域显示一个图标，点击右键可弹出菜单，点击左键可临时禁用软件
 
 按下ctrl+alt+v可在光标位置弹出快捷粘贴菜单，使用ctrl+1 - ctrl+0 可快速粘贴1-10号剪贴板内容
 
-##特性
+## 特性
 - 我们使用Lua语言来作为扩展系统，可轻松修改脚本
 - 主程序采用Unicode编码，Lua脚本采用UTF8编码，支持各种系统不乱码
 
-##基础
+## 基础
 - Lua基础脚本需要提供这些函数处理来自主程序的消息
 	- `OnRightButtonDown()` 右键点击托盘图标时调用
 	- `OnClipboardChange(text)` 剪贴板变化时调用，目前仅支持文本类型
-	- `AllowWheelThrough()` 是否允许滚轮穿透，返回true代表允许
 - 主程序为Lua虚拟机提供了这些实用函数
 	- `int MessageBox(text, title="", flag=0)` 显示对话框，返回确认类型
 	- `void print(...)` 打印调试信息，可使用[DebugView](http://technet.microsoft.com/en-us/sysinternals/bb896647)工具查看
@@ -37,7 +39,7 @@ LuaClip是一款window剪贴板增强软件，目前并不成熟还需要您的�
 	- `void Sleep(millisecond)` 挂起一定时间，单位毫秒
 - 这部分脚本放在scripts目录中，主程序启动会自动载入LuaClip.lua
 
-##插件（开发中）
+## 插件（开发中）
 - 插件系统也使用Lua语言编写，需要放在plugins目录下，这个系统由基础脚本驱动。
 	- `plugin.Init()` 启用插件时会自动调用
 	- `plugin.Uninit()` 停止插件时会自动调用
@@ -45,8 +47,3 @@ LuaClip是一款window剪贴板增强软件，目前并不成熟还需要您的�
 - 基础脚本为插件系统提供了以下回调函数，通常回调函数返回true表示插件已经处理此消息，基础脚本不再继续处理
 	- `BeforeClipboardChange(text)` 剪贴板发生改变，且尚未加入历史记录
 	- `AfterClipboardChange(text)` 剪贴板发生改变，且已经加入历史记录
-
-##关于
-联系我们：<http://www.shuax.com>
-
-QQ群：14724233

@@ -1,9 +1,8 @@
-#ifdef __STRICT_ANSI__
+﻿#ifdef __STRICT_ANSI__
 #undef __STRICT_ANSI__
 #endif
 
 #include <windows.h>
-#include <winable.h>
 #include <wininet.h>
 #include <commctrl.h>
 #include <process.h>
@@ -13,7 +12,7 @@
 #include <string.h>
 #include <malloc.h>
 #include <ctype.h>
-#include "lua\lua.hpp"
+#include "lua.hpp"
 
 template<typename Type>
 class Global
@@ -28,13 +27,12 @@ private:
 };
 
 TCHAR szClassName[]		    = _T("LuaClipboard");
-TCHAR szName[]			    = _T("LuaClip v1.4.1");
+TCHAR szName[]			    = _T("LuaClip v1.4.2");
 
 #define LUACLIP_VERSION 1410
 
 Global <HANDLE> hMutex		= NULL;			//单实例锁
 Global <bool> auto_track	= true;			//是否自动跟踪窗口
-Global <HHOOK> mouse_hook	= NULL;			//低级鼠标钩子
 Global <bool> is_enabled	= true;			//是否启动功能
 Global <bool> disable_once	= false;		//临时禁用监控
 

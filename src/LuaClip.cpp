@@ -1,33 +1,5 @@
-#include "resource.h"
+﻿#include "resource.h"
 #include "LuaClip.h"
-
-//鼠标钩子函数
-LRESULT CALLBACK LowLevelMouseProc(int nCode, WPARAM wParam, LPARAM lParam)
-{
-	if(nCode==HC_ACTION && wParam==WM_MOUSEWHEEL)
-	{
-		if(is_enabled && script.AllowWheelThrough())
-		{
-			MSLLHOOKSTRUCT *pmouse = (MSLLHOOKSTRUCT *)lParam;
-
-			//获得按键和方向
-			int fwKeys = GET_KEYSTATE_WPARAM(pmouse->mouseData);
-			int zDelta = GET_WHEEL_DELTA_WPARAM(pmouse->mouseData);
-
-			//修正按键
-			if(GetAsyncKeyState(VK_SHIFT) & 0x8000) fwKeys |= MK_SHIFT;
-			if(GetAsyncKeyState(VK_CONTROL) & 0x8000) fwKeys |= MK_CONTROL;
-			if(GetAsyncKeyState(VK_LBUTTON) & 0x8000) fwKeys |= MK_LBUTTON;
-			if(GetAsyncKeyState(VK_RBUTTON) & 0x8000) fwKeys |= MK_RBUTTON;
-			if(GetAsyncKeyState(VK_MBUTTON) & 0x8000) fwKeys |= MK_MBUTTON;
-
-			//发送消息，并且退出消息循环
-			PostMessage(WindowFromPoint(pmouse->pt), wParam, MAKELONG(fwKeys, zDelta), MAKELPARAM(pmouse->pt.x, pmouse->pt.y));
-			return 1;
-		}
-	}
-	return CallNextHookEx(mouse_hook, nCode, wParam, lParam );
-}
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -177,8 +149,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
     script.Load("scripts\\LuaClip.lua");
 
-	mouse_hook = SetWindowsHookEx(WH_MOUSE_LL, LowLevelMouseProc, hInstance, 0);
-
 	//消息循环
 	MSG messages;
 	while (GetMessage(&messages, NULL, 0, 0))
@@ -187,6 +157,5 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		DispatchMessage(&messages);
 	}
 
-	UnhookWindowsHookEx(mouse_hook);
 	return messages.wParam;
 }

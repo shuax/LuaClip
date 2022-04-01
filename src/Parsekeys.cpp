@@ -1,4 +1,4 @@
-/*
+﻿/*
 	char str[] = ",,,1234,,,,,wt";
 	StringSplit(str, ',', []
 		(const char *str)

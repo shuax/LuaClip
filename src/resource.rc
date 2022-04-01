@@ -1,14 +1,14 @@
 #include <windows.h>
 #include "resource.h"
 
-1 MANIFEST "./Res/LuaClip.manifest"
+1 24 "./Res/LuaClip.manifest"
 
 IDI_APPICON ICON DISCARDABLE "./Res/LuaClip.ico"
 IDI_APPICON_SMALL ICON DISCARDABLE "./Res/LuaClip-Small.ico"
 IDI_APPICON_DISABLED ICON DISCARDABLE "./Res/LuaClip-Disabled.ico"
 
-#define VERSION_WORDS 1, 4, 1, 0
-#define VERSION_STR "1.4.1"
+#define VERSION_WORDS 1, 4, 2, 0
+#define VERSION_STR "1.4.2"
 
 // -------------------------------------------------------
 
@@ -27,7 +27,7 @@ BEGIN
 	BEGIN
 	VALUE "CompanyName",		"shuax"
 	VALUE "FileDescription",	"基于Lua脚本的剪贴板增强软件"
-	VALUE "LegalCopyright",	"Copyright (C) 2013-2014 www.shuax.com"
+	VALUE "LegalCopyright",	"Copyright (C) 2013-2014 shuax.com"
 	VALUE "ProductName",		"LuaClipboard"
 	VALUE "FileVersion",		VERSION_STR
 	VALUE "ProductVersion",	VERSION_STR

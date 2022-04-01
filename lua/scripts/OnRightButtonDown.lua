@@ -31,7 +31,7 @@ function OnRightButtonDown()
 	AppendMenu(sub_menu, "开机启动(&S)", SetAutoRun, CheckAutoRun() and MF_CHECKED or 0)
 	AppendMenu(sub_menu, "重启程序(&R)", Restart)
 	AppendMenu(sub_menu, "关于我们(&A)", function()
-		MessageBox("欢迎使用我的剪贴板增强软件，使用Lua扩展逻辑。\n\nhttp://www.shuax.com", "关于 LuaClip", MB_ICONINFORMATION + MB_OK)
+		MessageBox("欢迎使用我的剪贴板增强软件，使用Lua扩展逻辑。\n\nhttp://shuax.com", "关于 LuaClip", MB_ICONINFORMATION + MB_OK)
 	end)
 	AppendMenu(menu, "程序设置(&L)", sub_menu)
 
