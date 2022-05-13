@@ -10,6 +10,8 @@ if is_mode("release") then
     add_ldflags("/DYNAMICBASE", "/LTCG")
 end
 
+set_symbols("debug")
+
 add_links("gdiplus", "kernel32", "user32", "gdi32", "winspool", "comdlg32")
 add_links("advapi32", "shell32", "ole32", "oleaut32", "uuid", "odbc32", "odbccp32")
 add_links("wininet", "shlwapi", "comctl32")
@@ -126,4 +128,5 @@ target("LuaClip")
     add_defines("UNICODE", "_UNICODE")
     after_build(function (target)
         os.cp("lua/*", "$(buildir)/release")
+        os.rm("$(buildir)/release/compile.LuaClip.pdb")
     end)
